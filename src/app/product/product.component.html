@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <app-nav></app-nav>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <table class="table table-bordered mt-5">
+                <thead>
+                    <th>STT</th>
+                    <th>Ảnh</th>
+                    <th>Tên sp</th>
+                    <th>Giá sp</th>
+                    <th>Tình trạng</th>
+                    <th>Mô tả</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products;index as i">
+                        <td>{{i + 1}}</td>
+                        <td><img [src]="product.img" alt="{{product.name}}" width="50"></td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.status ? 'còn hàng' : 'hết hàng'}}</td>
+                        <td>{{product.desc}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm align-center width=10px height=50px"
+                                (click)="onHandleRemote(product.id)">Delete</button>
+                            <button routerLink="/product/{{product.id}}/edit" class="btn btn-primary btn-sm">
+                                Edit
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </main>
+    </div>
+</div>
+
+<!-- <div *ngIf="detail">
+    Chi tiết sản phảm
+    <app-product-detail [product]="detail"></app-product-detail>
+</div> -->
+<!-- <div>
+    <input type="text" [(ngModel)]="product.name">
+</div> -->
